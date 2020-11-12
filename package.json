@@ -1,0 +1,28 @@
+{
+  "name": "opendicio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "env-cmd -f ./config/dev.env node ./bin/www",
+    "test": "env-cmd -f ./config/test.env mocha tests/* --exit"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "^4.2.0",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.10.11",
+    "morgan": "~1.9.1",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "env-cmd": "^10.1.0",
+    "eslint": "^7.12.1",
+    "eslint-config-google": "^0.14.0",
+    "mocha": "^8.2.1",
+    "sinon": "^9.2.1",
+    "supertest": "^6.0.1"
+  }
+}

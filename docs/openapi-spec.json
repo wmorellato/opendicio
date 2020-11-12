@@ -1,0 +1,96 @@
+{
+    "openapi":"3.0.2",
+    "info": {
+        "title":"Dicionario Aberto API",
+        "version":"1.0"
+    },
+    "servers": [
+        {
+            "url": "https://opendicio.foo.bar/api/v1"
+        }
+    ],
+    "components": {
+        "schemas": {
+            "Response": {
+                "type": "object",
+                "properties": {
+                    "total": {
+                        "type": "integer",
+                        "description": "Total number of entries found."
+                    },
+                    "dicts": {
+                        "type": "array",
+                        "description": "Dictionaries queried."
+                    },
+                    "data": {
+                        "type": "object",
+                        "description": "Data grouped by each dictionary queried."
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "word": {
+                "schema": {
+                    "type": "string"
+                },
+                "name":"word",
+                "in": "path",
+                "required": true,
+                "description": "The word to be consulted."
+            }
+        }
+    },
+    "paths": {
+        "/mean/{word}": {
+            "get": {
+                "description": "Retrieve the meaning of a given word.",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/word"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of words matching the query,",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Response"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Word does not exist in database."
+                    }
+                }
+            }
+        },
+        "/syn/{word}": {
+            "get": {
+                "description": "Retrieve synonyms of a given word.",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/word"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Response"
+                                }
+                            }
+                        },
+                        "description": "List of synonyms."
+                    },
+                    "404": {
+                        "description": "Word does not exist in database."
+                    }
+                }
+            }
+        }
+    }
+}
