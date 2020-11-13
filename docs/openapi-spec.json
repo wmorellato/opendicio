@@ -47,7 +47,7 @@
     "paths": {
         "/mean/{word}": {
             "get": {
-                "description": "Retrieve the meaning of a given word.",
+                "description": "Retrieve the full dictionary entry for a given word",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/word"
@@ -72,7 +72,7 @@
         },
         "/syn/{word}": {
             "get": {
-                "description": "Retrieve synonyms of a given word.",
+                "description": "Retrieve synonyms for a given word.",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/word"
