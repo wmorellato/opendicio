@@ -1,12 +1,12 @@
 {
     "openapi":"3.0.2",
     "info": {
-        "title":"Dicionario Aberto API",
+        "title":"OpenDicio",
         "version":"1.0"
     },
     "servers": [
         {
-            "url": "https://opendicio.foo.bar/api/v1"
+            "url": "https://opendicio.herokuapp.com/api/v1"
         }
     ],
     "components": {
@@ -20,7 +20,10 @@
                     },
                     "dicts": {
                         "type": "array",
-                        "description": "Dictionaries queried."
+                        "description": "Dictionaries queried.",
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "data": {
                         "type": "object",
@@ -44,7 +47,7 @@
     "paths": {
         "/mean/{word}": {
             "get": {
-                "description": "Retrieve the meaning of a given word.",
+                "description": "Retrieve the full dictionary entry for a given word",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/word"
@@ -69,7 +72,7 @@
         },
         "/syn/{word}": {
             "get": {
-                "description": "Retrieve synonyms of a given word.",
+                "description": "Retrieve synonyms for a given word.",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/word"
